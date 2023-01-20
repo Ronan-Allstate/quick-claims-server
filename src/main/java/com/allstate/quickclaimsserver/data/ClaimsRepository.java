@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface ClaimsRepository extends JpaRepository<Claims, Integer>  {
 
-    public List<Claims> findAllByCountry(String country);
+    public List<Claims> findAllByFirstName(String firstName);
 
 }

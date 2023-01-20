@@ -9,5 +9,5 @@ public interface ClaimsService {
 
     public List<Claims> getAllClaims();
     public Claims getById(Integer id) throws ClaimNotFoundException;
-    public List<Claims> getByCountry(String country);
+    public List<Claims> getByFirstName(String firstName);
 }

@@ -18,7 +18,7 @@ public class BootstrapService {
     public void setUpInitialData() {
         int numberOfClaims = claimsRepository.findAll().size();
         if (numberOfClaims == 0) {
-            Claims newClaim = new Claims(1, 200.00, "Ire", "Euro", Date.valueOf("2022-01-16"), "20", 4, 0.5, "Home");
+            Claims newClaim = new Claims(1, "Ronan", "Donnelly", "Mr", "01 Street Name", "City/Town", "ZipCode", 1, "Home", 5000, "Fire", "Cooking Failure", true, Date.valueOf("2022-01-16"));
             Claims savedClaim = claimsRepository.save(newClaim);
             System.out.println("Claim saved with Id: " + savedClaim.getId());
         }

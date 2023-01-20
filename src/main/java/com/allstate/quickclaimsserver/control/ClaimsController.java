@@ -17,12 +17,12 @@ public class ClaimsController {
     private ClaimsService claimsService;
 
     @GetMapping
-    public List<Claims> getAllClaims(@RequestParam(value="country", required = false) String country) {
-        if (country == null) {
+    public List<Claims> getAllClaims(@RequestParam(value="firstName", required = false) String firstName) {
+        if (firstName == null) {
             return claimsService.getAllClaims();
         }
         else {
-            return claimsService.getByCountry(country);
+            return claimsService.getByFirstName(firstName);
         }
     }
 

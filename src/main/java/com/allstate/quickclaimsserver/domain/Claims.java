@@ -11,26 +11,35 @@ public class Claims {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Double amount;
-    private String country;
-    private String currency;
+    private String firstName;
+    private String surname;
+    private String title;
+    private String streetName;
+    private String city;
+    private String zipCode;
+    private int policyNum;
+    private String insuranceType;
+    private int claimEstimate;
+    private String claimReason;
+    private String claimDescription;
+    private boolean claimStatus;
     private Date date;
-    @Column(name = "order_id")
-    private String orderId;
-    private Integer taxCode;
-    private Double taxRate;
-    private String type;
 
-    public Claims(Integer id, Double amount, String country, String currency, Date date, String orderId, Integer taxCode, Double taxRate, String type) {
+    public Claims(Integer id, String firstName, String surname, String title, String streetName, String city, String zipCode, int policyNum, String insuranceType, int claimEstimate, String claimReason, String claimDescription, boolean claimStatus, Date date) {
         this.id = id;
-        this.amount = amount;
-        this.country = country;
-        this.currency = currency;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.title = title;
+        this.streetName = streetName;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.policyNum = policyNum;
+        this.insuranceType = insuranceType;
+        this.claimEstimate = claimEstimate;
+        this.claimReason = claimReason;
+        this.claimDescription = claimDescription;
+        this.claimStatus = claimStatus;
         this.date = date;
-        this.orderId = orderId;
-        this.taxCode = taxCode;
-        this.taxRate = taxRate;
-        this.type = type;
     }
 
     public Claims() {
@@ -45,28 +54,100 @@ public class Claims {
         this.id = id;
     }
 
-    public Double getAmount() {
-        return amount;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getCountry() {
-        return country;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public int getPolicyNum() {
+        return policyNum;
+    }
+
+    public void setPolicyNum(int policyNum) {
+        this.policyNum = policyNum;
+    }
+
+    public String getInsuranceType() {
+        return insuranceType;
+    }
+
+    public void setInsuranceType(String insuranceType) {
+        this.insuranceType = insuranceType;
+    }
+
+    public int getClaimEstimate() {
+        return claimEstimate;
+    }
+
+    public void setClaimEstimate(int claimEstimate) {
+        this.claimEstimate = claimEstimate;
+    }
+
+    public String getClaimReason() {
+        return claimReason;
+    }
+
+    public void setClaimReason(String claimReason) {
+        this.claimReason = claimReason;
+    }
+
+    public String getClaimDescription() {
+        return claimDescription;
+    }
+
+    public void setClaimDescription(String claimDescription) {
+        this.claimDescription = claimDescription;
+    }
+
+    public boolean isClaimStatus() {
+        return claimStatus;
+    }
+
+    public void setClaimStatus(boolean claimStatus) {
+        this.claimStatus = claimStatus;
     }
 
     public Date getDate() {
@@ -77,63 +158,36 @@ public class Claims {
         this.date = date;
     }
 
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public Integer getTaxCode() {
-        return taxCode;
-    }
-
-    public void setTaxCode(Integer taxCode) {
-        this.taxCode = taxCode;
-    }
-
-    public Double getTaxRate() {
-        return taxRate;
-    }
-
-    public void setTaxRate(Double taxRate) {
-        this.taxRate = taxRate;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Claims claims = (Claims) o;
-        return Objects.equals(id, claims.id) && Objects.equals(amount, claims.amount) && Objects.equals(country, claims.country) && Objects.equals(currency, claims.currency) && Objects.equals(date, claims.date) && Objects.equals(orderId, claims.orderId) && Objects.equals(taxCode, claims.taxCode) && Objects.equals(taxRate, claims.taxRate) && Objects.equals(type, claims.type);
+        return policyNum == claims.policyNum && claimEstimate == claims.claimEstimate && claimStatus == claims.claimStatus && Objects.equals(id, claims.id) && Objects.equals(firstName, claims.firstName) && Objects.equals(surname, claims.surname) && Objects.equals(title, claims.title) && Objects.equals(streetName, claims.streetName) && Objects.equals(city, claims.city) && Objects.equals(zipCode, claims.zipCode) && Objects.equals(insuranceType, claims.insuranceType) && Objects.equals(claimReason, claims.claimReason) && Objects.equals(claimDescription, claims.claimDescription) && Objects.equals(date, claims.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, country, currency, date, orderId, taxCode, taxRate, type);
+        return Objects.hash(id, firstName, surname, title, streetName, city, zipCode, policyNum, insuranceType, claimEstimate, claimReason, claimDescription, claimStatus, date);
     }
 
     @Override
     public String toString() {
         return "Claims{" +
                 "id=" + id +
-                ", amount=" + amount +
-                ", country='" + country + '\'' +
-                ", currency='" + currency + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", title='" + title + '\'' +
+                ", streetName='" + streetName + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", policyNum=" + policyNum +
+                ", insuranceType='" + insuranceType + '\'' +
+                ", claimEstimate=" + claimEstimate +
+                ", claimReason='" + claimReason + '\'' +
+                ", claimDescription='" + claimDescription + '\'' +
+                ", claimStatus=" + claimStatus +
                 ", date=" + date +
-                ", orderId='" + orderId + '\'' +
-                ", taxCode=" + taxCode +
-                ", taxRate=" + taxRate +
-                ", type='" + type + '\'' +
                 '}';
     }
 }

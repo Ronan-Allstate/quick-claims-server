@@ -30,5 +30,5 @@ public class ClaimsServiceImpl implements ClaimsService{
     }
 
     @Override
-    public List<Claims> getByCountry(String country) { return claimsRepository.findAllByCountry(country);}
+    public List<Claims> getByFirstName(String firstName) { return claimsRepository.findAllByFirstName(firstName);}
 }
