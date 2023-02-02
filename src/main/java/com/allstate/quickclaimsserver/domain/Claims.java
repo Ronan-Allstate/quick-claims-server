@@ -5,15 +5,18 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cctransactions")
+@Table(name = "ClaimsTransactions")
 public class Claims {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name="order_id")
+    private String orderId;
     private String firstName;
     private String surname;
     private String title;
+    private String country;
     private String streetName;
     private String city;
     private String zipCode;
@@ -25,11 +28,13 @@ public class Claims {
     private boolean claimStatus;
     private Date date;
 
-    public Claims(Integer id, String firstName, String surname, String title, String streetName, String city, String zipCode, int policyNum, String insuranceType, int claimEstimate, String claimReason, String claimDescription, boolean claimStatus, Date date) {
+    public Claims(Integer id, String orderId, String firstName, String surname, String title, String country, String streetName, String city, String zipCode, int policyNum, String insuranceType, int claimEstimate, String claimReason, String claimDescription, boolean claimStatus, Date date) {
         this.id = id;
+        this.orderId = orderId;
         this.firstName = firstName;
         this.surname = surname;
         this.title = title;
+        this.country = country;
         this.streetName = streetName;
         this.city = city;
         this.zipCode = zipCode;
@@ -54,6 +59,14 @@ public class Claims {
         this.id = id;
     }
 
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -76,6 +89,14 @@ public class Claims {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getStreetName() {
@@ -163,21 +184,23 @@ public class Claims {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Claims claims = (Claims) o;
-        return policyNum == claims.policyNum && claimEstimate == claims.claimEstimate && claimStatus == claims.claimStatus && Objects.equals(id, claims.id) && Objects.equals(firstName, claims.firstName) && Objects.equals(surname, claims.surname) && Objects.equals(title, claims.title) && Objects.equals(streetName, claims.streetName) && Objects.equals(city, claims.city) && Objects.equals(zipCode, claims.zipCode) && Objects.equals(insuranceType, claims.insuranceType) && Objects.equals(claimReason, claims.claimReason) && Objects.equals(claimDescription, claims.claimDescription) && Objects.equals(date, claims.date);
+        return policyNum == claims.policyNum && claimEstimate == claims.claimEstimate && claimStatus == claims.claimStatus && Objects.equals(id, claims.id) && Objects.equals(orderId, claims.orderId) && Objects.equals(firstName, claims.firstName) && Objects.equals(surname, claims.surname) && Objects.equals(title, claims.title) && Objects.equals(country, claims.country) && Objects.equals(streetName, claims.streetName) && Objects.equals(city, claims.city) && Objects.equals(zipCode, claims.zipCode) && Objects.equals(insuranceType, claims.insuranceType) && Objects.equals(claimReason, claims.claimReason) && Objects.equals(claimDescription, claims.claimDescription) && Objects.equals(date, claims.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, surname, title, streetName, city, zipCode, policyNum, insuranceType, claimEstimate, claimReason, claimDescription, claimStatus, date);
+        return Objects.hash(id, orderId, firstName, surname, title, country, streetName, city, zipCode, policyNum, insuranceType, claimEstimate, claimReason, claimDescription, claimStatus, date);
     }
 
     @Override
     public String toString() {
         return "Claims{" +
                 "id=" + id +
+                ", orderId='" + orderId + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", title='" + title + '\'' +
+                ", country='" + country + '\'' +
                 ", streetName='" + streetName + '\'' +
                 ", city='" + city + '\'' +
                 ", zipCode='" + zipCode + '\'' +
