@@ -11,16 +11,16 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/country")
-public class CountryController {
+@RequestMapping("/api/claimStatus")
+public class ClaimStatusController {
 
     @Autowired
     private ClaimsService claimsService;
 
     @GetMapping()
-    public List<String> getAllCountries() {
+    public List<String> getAllClaimStatuses() {
 
-        return claimsService.getAllCountries();
+        return claimsService.getAllClaimStatuses();
     }
 
 }

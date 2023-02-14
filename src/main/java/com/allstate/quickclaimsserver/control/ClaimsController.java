@@ -19,12 +19,24 @@ public class ClaimsController {
 
     @GetMapping
     public List<Claims> getAllClaims(@RequestParam(value="country", required = false) String country,
-                                     @RequestParam(value="order", required = false) String order) {
+                                     @RequestParam(value="order", required = false) String order,
+                                     @RequestParam(value="insuranceType", required = false) String insuranceType,
+                                     @RequestParam(value="surname", required = false) String surname,
+                                     @RequestParam(value="claimStatus", required = false) String claimStatus) throws ClaimNotFoundException {
         if (order != null) {
             return claimsService.getByOrder(order);
         }
         else if (country != null) {
             return claimsService.getByCountry(country);
+        }
+        else if (claimStatus!= null) {
+            return claimsService.getByClaimStatus(claimStatus);
+        }
+        else if (insuranceType != null) {
+            return claimsService.getByInsuranceType(insuranceType);
+        }
+        else if (surname != null) {
+            return claimsService.getBySurname(surname);
         }
         else
         {

@@ -46,6 +46,19 @@ public class ClaimsServiceImpl implements ClaimsService{
     }
 
     @Override
+    public List<Claims> getByClaimStatus(String claimStatus) {
+        return claimsRepository.findAllByClaimStatus(claimStatus);
+    }
+
+    @Override
+    public List<String> getAllClaimStatuses() {
+        return claimsRepository.findAll().stream()
+                .map( claims -> claims.getClaimStatus().toLowerCase())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<String> getAllCountries() {
         return claimsRepository.findAll().stream()
                 .map( claims -> claims.getCountry().toLowerCase())
@@ -54,7 +67,20 @@ public class ClaimsServiceImpl implements ClaimsService{
     }
 
     @Override
-    public List<Claims> getByFirstName(String firstName) { return claimsRepository.findAllByFirstName(firstName);}
+    public List<Claims> getByInsuranceType(String insuranceType) {
+        return claimsRepository.findAllByInsuranceType(insuranceType);
+    }
+
+    @Override
+    public List<String> getAllInsuranceTypes() {
+        return claimsRepository.findAll().stream()
+                .map( claims -> claims.getInsuranceType().toLowerCase())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Claims> getBySurname(String surname) { return claimsRepository.findAllBySurname(surname);}
 
     @Override
     public Claims saveClaim(Claims claims) {
@@ -89,6 +115,21 @@ public class ClaimsServiceImpl implements ClaimsService{
         if (fields.containsKey("zipCode")) {
             claims.setZipCode(fields.get("zipCode").toString());
         }
+        if (fields.containsKey("make")) {
+            claims.setMake(fields.get("make").toString());
+        }
+        if (fields.containsKey("model")) {
+            claims.setModel(fields.get("model").toString());
+        }
+        if (fields.containsKey("modelYear")) {
+            claims.setModelYear(fields.get("modelYear").toString());
+        }
+        if (fields.containsKey("animalType")) {
+            claims.setAnimalType(fields.get("animalType").toString());
+        }
+        if (fields.containsKey("animalBreed")) {
+            claims.setAnimalBreed(fields.get("animalBreed").toString());
+        }
         if (fields.containsKey("policyNum")) {
             claims.setPolicyNum(Integer.parseInt(fields.get("policyNum").toString()));
         }
@@ -103,6 +144,18 @@ public class ClaimsServiceImpl implements ClaimsService{
         }
         if (fields.containsKey("claimDescription")) {
             claims.setClaimDescription(fields.get("claimDescription").toString());
+        }
+        if (fields.containsKey("claimStatus")) {
+            claims.setClaimStatus(fields.get("claimEstimate").toString());
+        }
+        if (fields.containsKey("task")) {
+            claims.setTask(fields.get("task").toString());
+        }
+        if (fields.containsKey("note")) {
+            claims.setNote(fields.get("note").toString());
+        }
+        if (fields.containsKey("payout")) {
+            claims.setPayout(Double.parseDouble(fields.get("payout").toString()));
         }
 
         return claimsRepository.save(claims);
